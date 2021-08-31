@@ -1,0 +1,8 @@
+ALTER TABLE question
+    ADD quiz_id BIGINT;
+
+ALTER TABLE question
+    ALTER COLUMN quiz_id SET NOT NULL;
+
+ALTER TABLE question
+    ADD CONSTRAINT FK_QUESTION_ON_QUIZ FOREIGN KEY (quiz_id) REFERENCES quiz (id);
