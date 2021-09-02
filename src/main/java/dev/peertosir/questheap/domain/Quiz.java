@@ -11,7 +11,7 @@ public class Quiz {
     private long id;
     private String title;
     private String description;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "quiz")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "quiz", cascade = CascadeType.ALL)
     private Set<Question> questions;
 
     public Quiz() {
@@ -76,5 +76,9 @@ public class Quiz {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    public void deleteQuestion(Question question) {
+        this.getQuestions().remove(question);
     }
 }

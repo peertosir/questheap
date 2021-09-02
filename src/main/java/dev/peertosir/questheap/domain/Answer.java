@@ -12,12 +12,13 @@ import java.util.Objects;
 @Table(name = "answer")
 public class Answer {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String text;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
+    private boolean isCorrect;
 
     @Override
     public boolean equals(Object o) {

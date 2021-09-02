@@ -1,4 +1,4 @@
-package dev.peertosir.questheap.dto.quiz.base;
+package dev.peertosir.questheap.dto.base;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

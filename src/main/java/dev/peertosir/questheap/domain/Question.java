@@ -1,14 +1,21 @@
 package dev.peertosir.questheap.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "question")
 public class Question {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String questionTitle;
     private String questionBody;
@@ -17,49 +24,6 @@ public class Question {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "quiz_id", nullable = false)
     private Quiz quiz;
-
-    public Question() {
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setQuestionTitle(String questionTitle) {
-        this.questionTitle = questionTitle;
-    }
-
-    public void setQuestionBody(String questionBody) {
-        this.questionBody = questionBody;
-    }
-
-    public void setAnswers(Set<Answer> answers) {
-        this.answers = answers;
-    }
-
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getQuestionTitle() {
-        return questionTitle;
-    }
-
-    public String getQuestionBody() {
-        return questionBody;
-    }
-
-    public Set<Answer> getAnswers() {
-        return answers;
-    }
-
-    public Quiz getQuiz() {
-        return quiz;
-    }
 
     @Override
     public boolean equals(Object o) {

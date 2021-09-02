@@ -1,8 +1,8 @@
 package dev.peertosir.questheap.controller;
 
 
+import dev.peertosir.questheap.dto.base.CreatedEntityIdTo;
 import dev.peertosir.questheap.dto.quiz.QuizTo;
-import dev.peertosir.questheap.dto.quiz.base.CreatedEntityIdTo;
 import dev.peertosir.questheap.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/quiz")
@@ -25,12 +24,12 @@ public class QuizController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public QuizTo getQuiz(@PathVariable("id") long id) {
-        return QuizTo.fromQuiz(quizService.getQuiz(id));
+        return quizService.getQuiz(id);
     }
 
     @GetMapping
     public List<QuizTo> getQuizes() {
-        return quizService.getQuizes().stream().map(QuizTo::fromQuiz).collect(Collectors.toList());
+        return quizService.getQuizes();
     }
 
     @PostMapping
@@ -42,7 +41,7 @@ public class QuizController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public QuizTo updateQuiz(@Valid @RequestBody QuizTo quizTo, @PathVariable("id") long id) {
-        return QuizTo.fromQuiz(quizService.updateQuiz(quizTo, id));
+        return quizService.updateQuiz(quizTo, id);
     }
 
     @DeleteMapping("/{id}")
