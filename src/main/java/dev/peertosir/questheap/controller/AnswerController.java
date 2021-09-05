@@ -42,6 +42,7 @@ public class AnswerController {
     }
 
     @DeleteMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAnswer(long id) {
         answerService.deleteAnswer(id);
     }

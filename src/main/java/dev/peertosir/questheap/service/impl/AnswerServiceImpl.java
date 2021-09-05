@@ -38,7 +38,8 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public void deleteAnswer(long id) {
-        getAnswer(id);
+        Answer answer = getAnswer(id);
+        answer.getQuestion().deleteAnswer(answer);
         answerRepository.deleteById(id);
     }
 }

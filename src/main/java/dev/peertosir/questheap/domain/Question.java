@@ -46,4 +46,8 @@ public class Question {
                 ", questionBody='" + questionBody + '\'' +
                 '}';
     }
+
+    public void deleteAnswer(Answer answer) {
+        this.answers.remove(answer);
+    }
 }
